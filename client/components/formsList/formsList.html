@@ -1,0 +1,26 @@
+<div ng-init="formsListCtrl.getForms()"></div>
+<br>
+<center><h1>Forms List</h1></center>
+<br>
+
+<button ng-click="formsListCtrl.moveToBuild()">Create New Form</button>
+<br>
+<br>
+<br>
+
+<table>
+    <tr>
+        <th>Form Id</th>
+        <th>Form Name</th>
+        <th>#Submissions</th>
+        <th>SubmitPage</th>
+        <th>Submissions Page</th>
+    </tr>
+   <tr ng-repeat="form in formsListCtrl.forms">
+       <td> {{form.formID}}</td>
+       <td> {{form.formName}}</td>
+       <td> {{form.subs}}</td>
+       <td><p ng-click="formsListCtrl.moveToPageSubmit(form.formID)">View</p></td>
+       <td><p ng-click="formsListCtrl.moveToPageSubmissions(form.formID)">View</p></td>
+   </tr>
+</table>

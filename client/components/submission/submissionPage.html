@@ -1,0 +1,15 @@
+<div ng-init="submissionPageCtrl.getFullFields()"></div>
+<br>
+<center><h1>"{{submissionPageCtrl.formName}}" form submissions page</h1></center>
+<br>
+<br>
+<table>
+    <tr>
+        <th>Field Name</th>
+        <th>User Input</th>
+    </tr>
+    <tr ng-repeat="field in submissionPageCtrl.fields">
+        <td>{{field.inputName}}</td>
+        <td>{{field.data}}</td>
+    </tr>
+</table>

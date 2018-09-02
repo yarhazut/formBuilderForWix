@@ -1,0 +1,65 @@
+<div ng-init="submitPageCtrl.getCleanForm()"></div>
+<br>
+<center><h1>"{{submitPageCtrl.formName}}" form submit page</h1></center>
+<br>
+<br>
+<center>
+<form name="registerForm" ng-submit="submitPageCtrl.submitForm(registerForm.$valid)" novalidate>
+        <div ng-repeat="field in submitPageCtrl.wholeFields">
+
+            <div ng-if="field.inputType=='text'">
+                <ng-form name="innerForm">
+                        <label>{{field.labelName}}({{field.inputType}})</label>
+                        <input type="text" name="data"  ng-model="submitPageCtrl.fieldsNames[field.inputName]" required >
+                        <p ng-show="(innerForm.data.$dirty || submitted) && innerForm.data.$error.required">You must fill the field.</p>
+                </ng-form>
+            </div> 
+
+            <div ng-if="field.inputType=='color'">
+                    <ng-form name="innerForm">
+                            <label>{{field.labelName}}({{field.inputType}})</label>
+                            <input type="color" name="data" placeholder="#000000"  ng-model="submitPageCtrl.fieldsNames[field.inputName]" required>
+                            <p ng-show="(innerForm.data.$dirty || submitted) && innerForm.data.$error.required">You must fill the field.</p>
+                    </ng-form>
+            </div> 
+
+            <div ng-if="field.inputType=='date'">
+                    <ng-form name="innerForm">
+                            <label>{{field.labelName}}({{field.inputType}})</label>
+                            <input type="date" name="data"  ng-model="submitPageCtrl.fieldsNames[field.inputName]" required >
+                            <p ng-show="(innerForm.data.$dirty || submitted) && innerForm.data.$error.required">You must fill the field.</p>
+                    </ng-form>
+            </div>
+
+            <div ng-if="field.inputType=='email'">
+                    <ng-form name="innerForm">
+                            <label>{{field.labelName}}({{field.inputType}})</label>
+                            <input type="text" name="data"  ng-model="submitPageCtrl.fieldsNames[field.inputName]" required ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/">
+                            <p ng-show="(innerForm.data.$dirty || submitted) && innerForm.data.$error.required">You must fill the field.</p>
+                            <p ng-show="innerForm.data.$error.pattern">not a valid email address</p>
+                    </ng-form>
+            </div>
+
+            <div ng-if="field.inputType=='tel'">
+                    <ng-form name="innerForm">
+                            <label>{{field.labelName}}({{field.inputType}})</label>
+                            <input type="tel" name="data"  ng-model="submitPageCtrl.fieldsNames[field.inputName]" required ng-pattern="/^\+?\d{3}[- ]?\d{7}$/">
+                            <p ng-show="(innerForm.data.$dirty || submitted) && innerForm.data.$error.required">You must fill the field.</p>
+                            <p ng-show="innerForm.data.$error.pattern">not a valid phone number</p>
+                    </ng-form>
+            </div>
+
+            <div ng-if="field.inputType=='number'">
+                    <ng-form name="innerForm">
+                            <label>{{field.labelName}}({{field.inputType}})</label>
+                            <input type="number" name="data"  ng-model="submitPageCtrl.fieldsNames[field.inputName]" required>
+                            <p ng-show="(innerForm.data.$dirty || submitted) && innerForm.data.$error.required">You must fill the field.</p>
+                            <p ng-show="innerForm.data.$error.number">not a valid number</p>
+                    </ng-form>
+            </div>   
+
+
+        </div>
+    <button type="submit" ng-disabled="registerForm.$invalid">Submit</button>
+</form>
+</center>

@@ -1,0 +1,42 @@
+<div ng-init="formBuilderCtrl.init()"></div>
+<br>
+<center><h1>Create Your Own Form</h1></center>
+<br>>
+<br>
+
+<center>
+    <div ng-repeat="field in formBuilderCtrl.fields">
+        <label item-width="100px">{{field.label}}</label>
+        <input type="text" item-width="100px">
+        
+    </div>
+</center>
+
+<br>
+<center>
+<button ng-show="formBuilderCtrl.showAddButton" ng-click="formBuilderCtrl.addField()"> Add Field</button>
+<br>
+<div ng-show="formBuilderCtrl.showAddButton!= true"> 
+    enter label:
+    <input type="text" name="label" ng-model="label"> 
+    <br>
+    enter input name:
+    <input type="text" name="inputName" ng-model="name"> 
+    <br>
+    enter input type:
+    <select  ng-options="type for type in formBuilderCtrl.inputTypes" ng-model="type">
+        </select>
+    <br>
+    <br>
+
+    <button ng-click="formBuilderCtrl.applyField()">Apply</button>
+
+</div>
+<br>
+Enter Form Name:
+<input type="text" ng-model="formName">
+<br>
+
+<button ng-show="formBuilderCtrl.moreThanOne" ng-click="formBuilderCtrl.saveForm()">Save Form</button>
+
+</center>
