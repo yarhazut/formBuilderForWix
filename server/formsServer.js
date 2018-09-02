@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
-//var jwt = require('jsonwebtoken');
 const sqlite3 = require('sqlite3').verbose();
 
 const app=express();
@@ -33,7 +32,6 @@ let db = new sqlite3.Database('formsDB.db', (err) => {
   
     db.all('select distinct cleanForms.formID, cleanForms.formName, formsSubs.subs from formsSubs join cleanForms on formsSubs.formID= cleanForms.formID', function(err, rows) { 
       if (err){
-        //console.err(err);
         res.sendStatus(500);
       }
       else{
@@ -79,8 +77,6 @@ app.get('/getCleanFormByID/:id', function(req,res) {
 
   app.get('/getAllFullFormsByID/:id', function(req,res) {
     var id = req.params.id;
-    /*select distinct cleanForms.formID, cleanForms.formName, formsSubs.subs from formsSubs join
-     cleanForms on formsSubs.formID= cleanForms.formID'*/
      var s= 'select distinct cleanForms.formName, fullForms.inputName, fullForms.data from fullForms join cleanForms on fullForms.formID= cleanForms.formID where fullForms.formID='+ id +' ORDER BY fullForms.inputName ASC, fullForms.data ASC';
       db.all(s , function(err, rows) { 
         if (err){

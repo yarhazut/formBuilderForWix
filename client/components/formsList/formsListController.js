@@ -33,21 +33,17 @@ angular.module('formsBuilder')
             }
                 
         }, function (response) {
-            window.alert("something went wrong.outererr..")
+            window.alert("something went wrong...")
         });
    }
 
    self.getForms = function () {
     $http.get(self.serverUrl + "getFormsForMainTable")
         .then(function (response) {
-            //self.forms= new Array();
             self.forms= response.data;
 
         }, function (response) {
-        //    self.reg.content = response.data
-            //Second function handles error
-            // self.reg.content = "Something went wrong";
-            window.alert("wrong")
+            window.alert("something went wrong....")
         });
 }
 

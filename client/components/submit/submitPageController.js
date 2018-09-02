@@ -29,20 +29,6 @@ angular.module('formsBuilder')
                     for (var i=0; i<response.data.length; i++)
                     {
                         self.fieldsNames[response.data[i].inputName]= x;
-                        //validation
-                        /*var pattern= "";
-                        var placeHolder="";
-                        if (response.data[i].inputType== 'text')
-                            pattern= "/^[a-zA-Z]*$/";
-                        else if (response.data[i].inputType== 'number')
-                            pattern= "/^[a-zA-Z]*$/";
-                        
-                        let obj={
-                            pattern: pattern,
-                            ph: placeHolder
-                        }
-
-                        self.validateF[response.data[i].inputName]= obj;*/
                     }
 
                 }, function (response) {

@@ -47,7 +47,6 @@ angular.module('formsBuilder')
                     }
                     if (response2.status=='200')
                     {
-                       // window.alert("Form saved successfully!")
                        self.insertFormToSubs();
                     }
                     
