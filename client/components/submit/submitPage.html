@@ -1,10 +1,11 @@
+
 <div ng-init="submitPageCtrl.getCleanForm()"></div>
 <br>
 <center><h1>"{{submitPageCtrl.formName}}" form submit page</h1></center>
 <br>
 <br>
 <center>
-<form name="registerForm" ng-submit="submitPageCtrl.submitForm(registerForm.$valid)" novalidate>
+<form id="registerForm" ng-submit="submitPageCtrl.submitForm(registerForm.$valid)" novalidate>
         <div ng-repeat="field in submitPageCtrl.wholeFields">
 
             <div ng-if="field.inputType=='text'">
@@ -60,6 +61,18 @@
 
 
         </div>
+        
+    <div class="g-recaptcha" data-sitekey="6LdfuW4UAAAAAIyuI5o485JqvqsAMHKncGeBHP1K"></div>
     <button type="submit" ng-disabled="registerForm.$invalid">Submit</button>
+   
 </form>
 </center>
+<script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('reCAPTCHA_site_key', {action: 'homepage'}).then(function(token) {
+               
+            });
+        });
+        </script>
+
+    

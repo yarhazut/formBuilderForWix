@@ -1,6 +1,6 @@
 angular.module('formsBuilder')
  .controller('submitPageController', ['$scope', '$rootScope', '$location', '$http', '$routeParams', function ($scope, $rootScope, $location, $http, $routeParams) {
- 
+
     let self = this;
     self.serverUrl = 'http://localhost:3000/';
     self.wholeFields= []
@@ -10,6 +10,7 @@ angular.module('formsBuilder')
     self.dataModel="";
     self.toServer= [];
     self.validaF= [];
+    
 
 
     self.saveData = function () {
@@ -18,6 +19,7 @@ angular.module('formsBuilder')
    }
 
     self.getCleanForm = function () {
+
         
         $http.get(self.serverUrl + 'getCleanFormByID/' + self.formID)
                 .then(function (response) {
@@ -34,6 +36,7 @@ angular.module('formsBuilder')
                 }, function (response) {
                     window.alert("Something went wrong");
                 });
+            
    }
 
 
@@ -77,5 +80,6 @@ self.convertFields = function () {
         self.toServer.push(obj);
     }
 }
-
+    
+    
 }]);
